@@ -92,6 +92,10 @@ depending on the distribution of `sed` installed on any given machine.
 Generally the coercions start by coercing to either snake or camel case
 and then modifying those resulting selections into kebab or pascal case.
 
+If you're interested in what those big `execute-keys` strings do,
+try pasting them into [`@Delapouite`](https://github.com/Delapouite)'s
+awesome [Kakoune Explain](https://delapouite.github.io/kakoune-explain/) tool.
+
 ### See also
 
 What about
