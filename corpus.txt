@@ -1,0 +1,5 @@
+some_string
+Some string
+SomeString
+some-string
+someString
