@@ -32,7 +32,6 @@ coerce-kebab %{
 
 hook global ModuleLoaded coerce %{
   map global coerce -docstring "snake_case" 's' "<esc>: require-module coerce; coerce-snake<ret>"
-  map global coerce -docstring "SHOUT_CASE" 'S' "<esc>: require-module coerce; coerce-snake; execute-keys '~'<ret>"
   map global coerce -docstring "kebab-case" 'k' "<esc>: require-module coerce; coerce-kebab<ret>"
 }
 

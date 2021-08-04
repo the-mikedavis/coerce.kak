@@ -45,11 +45,39 @@ pressing
 - `p` for PascalCase
 - `s` for snake_case
 - `k` for kebab-case
-- `S` for SHOUT_CASE
 
 Want to use these bindings without the `coerce` user-mode? Feel free to
 copy/paste the ones you want out to a custom configuration (the Unlicense
 has you covered :).
+
+### Other casings
+
+I have only implemented the casings I find useful. PRs are welcome for
+more casings, but be mindful that many casings can be created with
+the existing implemented casings plus default kakoune bindings like
+`~` (uppercase the selection).
+
+For example, to implement SHOUT_CASE, one may simply run the snake_case
+coersion on a selection and then type `~`.
+
+These can be added à la carte by adding a hook to the `ModuleLoaded` like
+so:
+
+```kak
+hook global ModuleLoaded coerce %{
+  map global coerce -docstring "SHOUT_CASE" 'S' "<esc>: require-module coerce; coerce-snake; execute-keys '~'<ret>"
+}
+```
+
+Or with `plug.kak`:
+
+```kak
+plug 'the-mikedavis/coerce.kak' config %{
+  # set up the binding for coerce-mode here
+} defer %{
+  map global coerce -docstring "SHOUT_CASE" 'S' "<esc>: require-module coerce; coerce-snake; execute-keys '~'<ret>"
+}
+```
 
 ### How it works
 
