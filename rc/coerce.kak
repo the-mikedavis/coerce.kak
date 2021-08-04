@@ -11,7 +11,9 @@ provide-module coerce %§
 
 try %{ declare-user-mode coerce }
 
-define-command -docstring "coerce selection to snake_case" coerce-snakecase %{
+# coerce to snake_case
+define-command -hidden \
+coerce-snakecase %{
   execute-keys '<a-:><a-;>s |-|[a-z][A-Z]<ret>;a<space><esc>s[-\s]+<ret>c_<esc><a-i>w`'
 }
 
@@ -19,4 +21,13 @@ define-command -docstring "coerce selection to snake_case" coerce-snakecase %{
 
 hook global ModuleLoaded coerce %{
   map global coerce -docstring "snake_case" 's' "<esc>: require-module coerce; coerce-snakecase<ret>"
+  map global coerce -docstring "SHOUT_CASE" 'S' "<esc>: require-module coerce; coerce-snakecase; execute-keys '~'<ret>"
 }
+
+# manual testing corpus:
+#   some_string
+#   Some string
+#   SomeString
+#   some-string
+#   someString
+#   SOME_STRING
