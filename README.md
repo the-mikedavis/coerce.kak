@@ -57,3 +57,10 @@ function and replaces the selection with the output.
 Note that some of the features used by these `sed` invocations assume that
 you are using GNU `sed`, most notably the `;` for separating multiple
 search-and-replace options.
+
+### See also
+
+What about
+[`dmerejkowsky/kak-subvert`](https://github.com/dmerejkowsky/kak-subvert)?
+That looks good and might even provide better replacement results but I
+don't wanna have to install the rust toolchain :P
