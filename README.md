@@ -12,7 +12,7 @@ Or use the wonderful [`plug.kak`](https://github.com/andreyorst/plug.kak)
 
 ```kak
 plug 'the-mikedavis/coerce.kak' %{
-  map global normal + ': coerce-mode'
+  map global normal + ': coerce-mode<ret>'
 }
 ```
 
@@ -28,14 +28,14 @@ documents some unbound keys you may use. For example, this will bind the
 the `coerce` module. This can improve start-up time.
 
 ```kak
-map global normal + ': coerce-mode'
+map global normal + ': coerce-mode<ret>'
 ```
 
 If you use the user-mode/leader-key feature, you can bind a key to get to
 the `coerce` mode from the user mode:
 
 ```kak
-map global user c ': coerce-mode' -docstring "coercion mode"
+map global user c ': coerce-mode<ret>' -docstring "coercion mode"
 ```
 
 Now you can coerce the casing of any selection by entering that mode and
