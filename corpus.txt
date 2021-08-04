@@ -3,3 +3,4 @@ Some string
 SomeString
 some-string
 someString
+SOME_STRING

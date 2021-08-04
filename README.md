@@ -42,6 +42,7 @@ pressing
 - `p` for PascalCase
 - `s` for snake_case
 - `k` for kebab-case
+- `S` for SHOUT_CASE
 
 Want to use these bindings without the `coerce` user-mode? Feel free to
 copy/paste the ones you want out to a custom configuration (the Unlicense
