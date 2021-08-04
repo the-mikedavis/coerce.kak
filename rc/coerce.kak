@@ -11,20 +11,29 @@ provide-module coerce %§
 
 try %{ declare-user-mode coerce }
 
-# coerce to snake_case
 define-command -hidden \
-coerce-snakecase %{
+coerce-snake %{
   # the try prevents an error when the selection is already snake_case
   try %{
     execute-keys -itersel '<a-:><a-;>s |-|[a-z][A-Z]<ret>;a<space><esc>s[-\s]+<ret>c_<esc><a-i>w`'
   }
 }
 
+define-command -hidden \
+coerce-kebab %{
+  coerce-snake
+  # this try prevents failure when the snake_case has no underscores
+  try %{
+    execute-keys -itersel 's_<ret>c-<esc><a-i>w'
+  }
+}
+
 §
 
 hook global ModuleLoaded coerce %{
-  map global coerce -docstring "snake_case" 's' "<esc>: require-module coerce; coerce-snakecase<ret>"
-  map global coerce -docstring "SHOUT_CASE" 'S' "<esc>: require-module coerce; coerce-snakecase; execute-keys '~'<ret>"
+  map global coerce -docstring "snake_case" 's' "<esc>: require-module coerce; coerce-snake<ret>"
+  map global coerce -docstring "SHOUT_CASE" 'S' "<esc>: require-module coerce; coerce-snake; execute-keys '~'<ret>"
+  map global coerce -docstring "kebab-case" 'k' "<esc>: require-module coerce; coerce-kebab<ret>"
 }
 
 # manual testing corpus:
