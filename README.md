@@ -18,7 +18,7 @@ plug 'the-mikedavis/coerce.kak' %{
 
 ### Usage
 
-`corce.kak` defines a user-mode called `coerce` with bindings for different
+`coerce.kak` defines a user-mode called `coerce` with bindings for different
 casings. You must bind the `coerce` user-mode to a mode key:
 the [kakoune Wiki](https://github.com/mawww/kakoune/wiki/Normal-mode-commands)
 documents some unbound keys you may use. For example, this will bind the
