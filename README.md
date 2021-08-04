@@ -60,8 +60,8 @@ the existing implemented casings plus default kakoune bindings like
 For example, to implement SHOUT_CASE, one may simply run the snake_case
 coersion on a selection and then type `~`.
 
-These can be added à la carte by adding a hook to the `ModuleLoaded` like
-so:
+These can be added à la carte to your own configuration by adding a hook
+to the `ModuleLoaded` like so:
 
 ```kak
 hook global ModuleLoaded coerce %{
@@ -81,14 +81,16 @@ plug 'the-mikedavis/coerce.kak' config %{
 
 ### How it works
 
-The `coerce.kak` implementation is quite small: it opens a pipe (`|`) to
-`sed` which uses the proper search-and-replace for each casing. The pipe
-operation in kakoune passes the current selection to some command line
-function and replaces the selection with the output.
+`coerce.kak` defines a module called `coerce` and a user-mode (also called
+`coerce`. The module defines some functions that use kakoune's
+`execute-keys` feature to operate on selections. `execute-keys` allows
+one to work across multiple selections and does not have any external
+dependencies. In contrast, the first version of this plugin piped out
+to `sed` which does not work across multiple selections and can be brittle
+depending on the distribution of `sed` installed on any given machine.
 
-Note that some of the features used by these `sed` invocations assume that
-you are using GNU `sed`, most notably the `;` for separating multiple
-search-and-replace options.
+Generally the coercions start by coercing to either snake or camel case
+and then modifying those resulting selections into kebab or pascal case.
 
 ### See also
 
@@ -96,3 +98,10 @@ What about
 [`dmerejkowsky/kak-subvert`](https://github.com/dmerejkowsky/kak-subvert)?
 That looks good and might even provide better replacement results but I
 don't wanna have to install the rust toolchain :P
+
+Admittedly I did not see
+[`case.kak`](https://gitlab.com/FlyingWombat/case.kak/-/tree/master) before
+writing this plugin. `case.kak` has more casings and helper functions, but
+it can error out on edge cases such as trying to convert something in
+snake_case to snake_case. This plugin tries to be as forgiving of input as
+possible.
