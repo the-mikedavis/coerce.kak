@@ -6,13 +6,13 @@ coercion plugin for the [kakoune](https://kakoune.org) editor
 ### Installation
 
 You can use the built-in plugin insfrastructure in kakoune by adding
-`coerce.kak` to the autoload directory: `~/.config/kak/autoload`.
+`rc/coerce.kak` to the autoload directory: `~/.config/kak/autoload`.
 
 Or use the wonderful [`plug.kak`](https://github.com/andreyorst/plug.kak)
 
 ```kak
 plug 'the-mikedavis/coerce.kak' %{
-  map global normal + ': enter-user-mode coerce'
+  map global normal + ': coerce-mode'
 }
 ```
 
@@ -24,15 +24,18 @@ the [kakoune Wiki](https://github.com/mawww/kakoune/wiki/Normal-mode-commands)
 documents some unbound keys you may use. For example, this will bind the
 `coerce` user-mode to `+` in normal mode.
 
+`coerce.kak` also provides a `coerce-mode` command that lazily requires
+the `coerce` module. This can improve start-up time.
+
 ```kak
-map global normal + ': enter-user-mode coerce'
+map global normal + ': coerce-mode'
 ```
 
 If you use the user-mode/leader-key feature, you can bind a key to get to
 the `coerce` mode from the user mode:
 
 ```kak
-map global user c ': enter-user-mode coerce' -docstring "coercion mode"
+map global user c ': coerce-mode' -docstring "coercion mode"
 ```
 
 Now you can coerce the casing of any selection by entering that mode and
