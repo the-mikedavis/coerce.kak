@@ -14,7 +14,10 @@ try %{ declare-user-mode coerce }
 # coerce to snake_case
 define-command -hidden \
 coerce-snakecase %{
-  execute-keys '<a-:><a-;>s |-|[a-z][A-Z]<ret>;a<space><esc>s[-\s]+<ret>c_<esc><a-i>w`'
+  # the try prevents an error when the selection is already snake_case
+  try %{
+    execute-keys -itersel '<a-:><a-;>s |-|[a-z][A-Z]<ret>;a<space><esc>s[-\s]+<ret>c_<esc><a-i>w`'
+  }
 }
 
 §
