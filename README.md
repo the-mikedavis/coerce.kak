@@ -6,7 +6,7 @@ coercion plugin for the [kakoune](https://kakoune.org) editor
 ### Installation
 
 You can use the built-in plugin insfrastructure in kakoune by adding
-`rc/coerce.kak` to the autoload directory: `~/.config/kak/autoload`.
+the `rc/coerce.kak` to the autoload directory: `~/.config/kak/autoload`.
 
 Or use the wonderful [`plug.kak`](https://github.com/andreyorst/plug.kak)
 
@@ -104,8 +104,8 @@ That looks good and might even provide better replacement results but I
 don't wanna have to install the rust toolchain :P
 
 Admittedly I did not see
-[`case.kak`](https://gitlab.com/FlyingWombat/case.kak/-/tree/master) before
-writing this plugin. `case.kak` has more casings and helper functions, but
-it can error out on edge cases such as trying to convert something in
-snake_case to snake_case. This plugin tries to be as forgiving of input as
-possible.
+[`FlyingWombat/case.kak`](https://gitlab.com/FlyingWombat/case.kak/-/tree/master)
+before writing this plugin. `case.kak` has more casings and helper functions,
+but it can error out on edge cases such as trying to convert something in
+snake_case to snake_case. This plugin tries to be as forgiving of input
+as possible.
